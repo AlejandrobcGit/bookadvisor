@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>BookAdvisor / Quienes Somos</title>
+    <style>
+        /* Opcional: Estilos personalizados adicionales */
+        section {
+            padding-top: 50px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <section>
+                    <h1>Quienes Somos</h1>
+                    <p>Bienvenido a bookAdvisor, tu aliado en la exploración del fascinante mundo de la lectura. En bookAdvisor, creemos que cada libro es una puerta a un nuevo universo, y estamos aquí para abrir tantas puertas como desees.</p>
+                    <h1>Nuestra Misión</h1>
+                    <p>En bookAdvisor, nuestra misión es crear un espacio donde los amantes de los libros puedan descubrir, valorar y compartir sus lecturas favoritas. Nos esforzamos por ser la plataforma más confiable y completa para los bibliófilos de todo el mundo.</p>
+                    <h1>¿Qué Ofrecemos?</h1>
+                    <ul>
+                        <li><b>Cálogo Extenso</b>: Una amplia selección de títulos que abarca todos los géneros imaginables.</li>
+                        <li><b>Valoraciones y Comentarios</b>: Nuestra comunidad puede puntuar los libros y dejar comentarios para ayudar a otros lectores a encontrar sus próximas lecturas.</li>
+                        <li><b>Búsquedas Avanzadas</b> Herramientas de búsqueda que te permiten encontrar libros según tus intereses específicos.</li>
+                        <li><b>Rankings Dinámicos</b> Listas de libros mejor valorados basadas en las opiniones de todos nuestros usuarios.</li>
+                    </ul>
+                </section>
+            </div>
+            <div class="col-md-6">
+                <section>
+                    <h1>Nuestro Compromiso</h1>
+                    <p>Nos comprometemos a mantener un catálogo actualizado y a proporcionar una plataforma interactiva y fácil de usar. Queremos que bookAdvisor sea tu primera opción cuando pienses en descubrir nuevos libros.</p>
+                    <h1>Únete a Nuestra Comunidad</h1>
+                    <p>Si eres un ávido lector o simplemente alguien que busca una buena recomendación, bookAdvisor es el lugar para ti. Únete a nuestra comunidad y comienza tu aventura literaria con nosotros.</p>
+                    <h1>Nuestro Compromiso</h1>
+                    <p>Nos comprometemos a mantener un catálogo actualizado y a proporcionar una plataforma interactiva y fácil de usar. Queremos que bookAdvisor sea tu primera opción cuando pienses en descubrir nuevos libros.</p>
+                </section>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

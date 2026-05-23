@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>BookAdvisor / Generos</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <h1 class="mb-4">Lista de Generos</h1>
+    <main>
+        <div class="table-libros">
+            <section class="container mt-5">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Valor</th>
+                            <th>Editar</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${repositorio}">
+                            <td th:text="${item.id}"></td>
+                            <td th:text="${item.nombre}"></td>
+                            <td><a th:href="@{/genero/editar/{id}(id=${item.id})}" class="btn btn-primary">Editar</a></td>
+                            <td><a th:href="@{/genero/borrar/{id}(id=${item.id})}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </main>
+    <div class="text-center">
+        <a th:href="@{/genero/nuevo}" class="btn btn-primary">Nuevo</a>
+        <p th:if="${msg!=null}" class="alert alert-danger">Error: <span th:text="${msg}">err</span></p>
+    </div>
+    </section>
+    <footer class="mt-5">
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

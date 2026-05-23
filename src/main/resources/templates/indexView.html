@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>BookAdvisor / Bienvenido</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <section style="text-align: center">
+        <h1>Bienvenido/a a muestra Web</h1>
+        <img src="/imagenes/logo.jpg" alt="Logo">
+    </section>
+    <footer>
+         <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

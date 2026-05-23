@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>BookAdvisor / Libros</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <h1 class="mb-4">Lista de libros</h1>
+
+    <!--Etiquetas para filtrar la tabla de libros-->
+
+    <div class="mb-3">
+        <form method="post" action="#" th:action="@{/libros/buscar}" th:object="${findForm}">
+            <label class="form-label">Buscar por titulo: <input type="text" th:field="*{titulo}" /></label><br>
+            <label class="form-label">Genero: </label>
+            <select name="genero">
+                <option value="">Todos</option>
+                <option th:each="gen : ${Generos}" th:value="${gen.id}"
+                    th:text="${gen.nombre}" th:selected="${gen} == ${findForm}"></option>
+            </select>
+            <input type="submit" value="Buscar" /><br>
+            <a href="/libros/" class="btn btn-secondary">Restablecer</a>
+        </form>
+    </div>
+    <main>
+        <div class="table-libros">
+            <section class="container mt-5">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <!-- <th>ID</th> -->
+                            <th>Portada</th>
+                            <th>Titulo</th>
+                            <th>Año</th>
+                            <th>Genero</th>
+                            <th>Autor</th>
+                            <!-- <th>Sinopsis</th> -->
+                            <th>Idioma</th>
+                            <th>Editar</th>
+                            <th>Valoraciones</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${repositorio}">
+                            <!-- <td th:text="${item.id}"></td> -->
+                            <td><img th:src="'/libros/files/'+${item.archivo}" alt="Portada" width="64px"/></td>
+                            <td><a th:href="@{/libros/consulta/{id}(id=${item.id})}"><span th:text="${item.titulo}"></span></a>
+                            </td>
+                            <td th:text="${item.anho}"></td>
+                            <td th:text="${item.generoNombre}"></td>
+                            <td th:text="${item.autor}"></td>
+                            <!-- <td th:text="${item.sinopsis}"></td> -->
+                            <td th:text="${item.idioma}"></td>
+                            <td><a th:href="@{/libros/editar/{id}(id=${item.id})}" class="btn btn-primary">Editar</a></td>
+                            <td><a th:href="@{/valoracion/(id=${item.id})}" class="btn btn-primary">Valoración</a></td>
+                            <td><a th:href="@{/libros/borrar/{id}(id=${item.id})}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </main>
+    <div class="text-center">
+        <a th:href="@{/libros/nuevo}" class="btn btn-primary">Nuevo</a>
+        <p th:if="${msg!=null}" class="alert alert-danger">Error: <span th:text="${msg}">err</span></p>
+    </div>
+    </section>
+    <footer class="mt-5">
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

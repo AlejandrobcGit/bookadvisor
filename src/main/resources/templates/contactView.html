@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>BookAdvisor / Contacta</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <header class="container mt-4">
+        <h1>Contacta</h1>
+    </header>
+    <section class="container mt-4">
+        <form action="#" method="post" th:action="@{/public/contac}" th:object="${formInfo}">
+            <div class="form-group">
+                <label><strong>Nombre:</strong></label>
+                <input  th:classappend="${#fields.hasErrors('nombre')} ? 'cssError form-control': 'form-control'" type="text" th:field="*{nombre}">
+                <span class="text-danger" th:each="error : ${#fields.errors('nombre')}" th:text="${error}"></span>
+            </div>
+            <div class="form-group">
+                <label><strong>Email:</strong></label>
+                <input th:classappend="${#fields.hasErrors('email')} ? 'cssError form-control':'form-control'" type="email" th:field="*{email}">
+                <span class="text-danger" th:each="error : ${#fields.errors('email')}" th:text="${error}"></span>
+            </div>
+            <div class="form-group">
+                <label><strong>Tipo de contacto:</strong></label>
+                <select th:classappend="${#fields.hasErrors('tipo_contact')} ? 'cssError form-control':'form-control'" size="3" th:field="*{tipo_contact}">
+                    <option value="quejas">Quejas</option>
+                    <option value="consultas">Consultas</option>
+                    <option value="otros">Otros</option>
+                </select>
+                <span class="text-danger" th:each="error : ${#fields.errors('tipo_contact')}" th:text="${error}"></span>
+            </div>
+            <div class="form-group">
+                <label><strong>Comentarios:</strong></label>
+                <input th:classappend="${#fields.hasErrors('comentario')} ? 'cssError form-control':'form-control'" type="text" th:field="*{comentario}">
+                <span class="text-danger" th:each="error : ${#fields.errors('comentario')}" th:text="${error}"></span>
+            </div>
+            <div class="form-group form-check">
+                <input class="form-check-input" type="checkbox" th:field="*{acepta_condiciones}">
+                <label th:classappend="${#fields.hasErrors('acepta_condiciones')} ? 'cssError form-check-label':'form-check-label'"><strong>Acepta condiciones:</strong></label>
+                <span class="text-danger" th:each="error : ${#fields.errors('acepta_condiciones')}" th:text="${error}"></span>
+            </div>
+            <p>
+                <input class="btn btn-primary" type="submit" name="action" value="Enviar">
+            </p>
+            <div th:if="${formInfo.acepta_condiciones}" class="alert alert-success mt-4">
+                <p>Formulario procesado correctamente</p>
+            </div>
+        </form>
+    </section>
+    <footer>
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

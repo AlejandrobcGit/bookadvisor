@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>Consultar Libro</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <section class="container mt-5">
+        <h1 class="mb-4">Consultar Libro</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <img th:src="'/libros/files/'+${libro.archivo}" class="img-fluid" alt="Portada del libro"/>
+            </div>
+            <div class="col-md-8">
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label><strong>ID: </strong></label>
+                        <span th:text="*{libro.id}" class="form-control-plaintext"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><strong>Año: </strong></label>
+                        <span th:text="*{libro.anho}" class="form-control-plaintext"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><strong>Idioma: </strong></label>
+                        <span th:text="*{libro.idioma}" class="form-control-plaintext"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><strong>Género: </strong></label>
+                        <span th:text="*{libro.genero}" class="form-control-plaintext"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><strong>Autor: </strong></label>
+                        <span th:text="*{libro.autor}" class="form-control-plaintext"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label><strong>Titulo: </strong></label>
+                        <span th:text="*{libro.titulo}" class="form-control-plaintext"></span>
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label><strong>Sinopsis: </strong></label>
+                        <span th:text="*{libro.sinopsis}" class="form-control-plaintext"></span>
+                    </div>
+                </div>
+                <a href="/libros/" class="btn btn-secondary mt-3">Atrás</a>
+                <a th:href="@{/libros/editar/{id}(id=${id})}" class="btn btn-secondary mt-3">Editar</a>
+                <a th:href="@{/libros/borrar/{id}(id=${id})}" class="btn btn-danger mt-3">Borrar</a>
+            </div>
+        </div>
+    </section>
+    <footer class="mt-5">
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

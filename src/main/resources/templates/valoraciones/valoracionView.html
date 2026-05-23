@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>BookAdvisor / Generos</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <h1 class="mb-4">Valoraciones del libro: <span th:text="${libro.titulo}"></span></h1>
+        <div class="table-libros">
+            <section class="container mt-5">
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Usuario</th>
+                            <th>Puntos</th>
+                            <th>Observacion</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="item : ${listaValoraciones}">
+                            <td th:text="${item.usuario.nombre}"></td>
+                            <td th:text="${item.puntos}"></td>
+                            <td th:text="${item.observacion}"></td>
+                            <td><a th:href="@{/valoracion/borrar/{id}/{idlibro}(id=${item.id}, idlibro=${libro.id})}" class="btn btn-danger">Borrar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    <div class="text-center">
+        <p><span th:if="${error} != null" class="alert alert-danger" th:text="${error}"></span></p>
+        <a th:href="@{/valoracion/nuevo/{id}(id=${libro.id})}" class="btn btn-primary">Nuevo</a>
+        <a th:href="@{/libros/}" class="btn btn-primary">Atras</a>
+        <p th:if="${msg!=null}" class="alert alert-danger">Error: <span th:text="${msg}">err</span></p>
+    </div>
+    </section>
+    <footer class="mt-5">
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

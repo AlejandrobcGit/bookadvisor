@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>Nuevo Usuario</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <div class="container mt-5">
+        <h1 class="mb-4">Nuevo Usuario</h1>
+        <form action="#" method="post" th:action="@{/user/New}" th:object="${usuario}">
+            <div class="mb-3">
+                <label for="userId" class="form-label">ID:</label>
+                <input type="text" id="userId" class="form-control" th:field="*{id}" readonly />
+            </div>
+            <div class="mb-3">
+                <label for="userName" class="form-label">Nombre:</label>
+                <input type="text" id="userName" class="form-control" th:field="*{nombre}" />
+            </div>
+            <div class="mb-3">
+                <label for="userPassword" class="form-label">Contraseña:</label>
+                <input type="text" id="userPassword" class="form-control" th:field="*{contraseña}" />
+            </div>
+            <div class="mb-3">
+                <label for="userRole" class="form-label">Rol:</label>
+                <select id="userRole" class="form-select" th:field="*{rol}">
+                    <option th:each="rol : ${T(proyecto.bookadvisor.domain.Roles).values()}" th:value="${rol}"
+                        th:text="${rol}" th:selected="${rol} == *{rol}"></option>
+                </select>
+            </div>
+            <p><span th:if="${error} != null" class="alert alert-danger" th:text="${error}"></span></p>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+            <a href="/user/" class="btn btn-primary">Inicio</a>
+        </form>
+       
+    </div>
+    <footer class="mt-5">
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>

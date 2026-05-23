@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity">
+
+<head>
+    <th:block th:fragment="cabecera"> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Bootstrap CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+    </th:block>
+</head>
+
+<body>
+    <nav>
+        <th:block th:fragment="nav">
+            <a href="/public/"><Strong>Inicio</Strong></a>
+            <a href="/public/whoit"><Strong>Quienes Somos</Strong></a>
+            <a href="/libros/"><Strong>Libros</Strong></a>  
+            <a href="/genero/"><Strong>Generos/Libros</Strong></a>
+            <a href="/public/contact"><Strong>Contacta</Strong></a>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/signin}">Login</a>
+            <a sec:authorize="!isAuthenticated()" th:href="@{/user/auto}">Registrate!!!</a>
+            <a sec:authorize="isAuthenticated()" th:href="@{/signout}">Logout</a>
+            <span sec:authorize="hasRole('Administrador')"><a href="http:/user/">Gestión Usuarios</a></span>
+            <p sec:authorize="isAuthenticated()">Usuario Conectado: <span sec:authentication="name"></span> -
+                <span sec:authorize="hasRole('Administrador')">Administrador</span>
+                <span sec:authorize="hasRole('Usuario')">Usuario</span></span>
+                <span sec:authorize="hasRole('Manager')">Manager</span></span>
+            </p>
+        </th:block>
+    </nav>
+    <footer>
+        <th:block th:fragment="footer">
+            <p>&copy; <span th:text="${annoActual}"> </span> <b>BookAdvisor</b> Donde cada libro cuenta una historia y
+                cada lector encuentra su próximo gran libro. Todos los derechos reservados.</p>
+            <!-- Bootstrap JS and dependencies -->
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        </th:block>
+    </footer>
+</body>
+
+</html>

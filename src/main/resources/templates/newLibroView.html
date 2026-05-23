@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <th:block th:insert="~{fragments/fragment.html :: cabecera}"></th:block>
+    <title>Editar Libro</title>
+</head>
+
+<body>
+    <nav>
+        <th:block th:insert="~{fragments/fragment.html :: nav}"></th:block>
+    </nav>
+    <section class="container mt-5">
+        <h1 class="mb-4">Agregar Libro</h1>
+        <form method="post" action="#" th:action="@{/libros/nuevo}" th:object="${libro}" enctype="multipart/form-data">
+            <div class="form-row">
+               <!-- <div class="form-group col-md-4">
+                    <label><strong>ID: </strong></label>
+                    <input type="text" th:field="*{id}"
+                        th:classappend="${#fields.hasErrors('id')} ? 'cssError form-control':'form-control'">
+                </div>-->
+                <div class="form-group col-md-6">
+                    <label><strong>Año: </strong></label>
+                    <input type="text" th:field="*{anho}"
+                        th:classappend="${#fields.hasErrors('anho')} ? 'cssError form-control':'form-control'">
+                </div>
+                <div class="form-group col-md-6">
+                    <label><strong>Idioma: </strong></label>
+                    <select th:field="*{idioma}"
+                        th:classappend="${#fields.hasErrors('idioma')} ? 'cssError form-control':'form-control'">
+                        <option th:each="idi : ${T(proyecto.bookadvisor.domain.Idioma).values()}" th:value="${idi}"
+                            th:text="${idi}" th:selected="${idi} == ${idioma}"></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label><strong>Género: </strong></label>
+                    <select th:field="*{genero}"
+                        th:classappend="${#fields.hasErrors('genero')} ? 'cssError form-control':'form-control'">
+                        <option th:each="gen : ${generoAll}" th:value="${gen.id}" th:text="${gen.nombre}"></option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label><strong>Autor: </strong></label>
+                    <input type="text" th:field="*{autor}"
+                        th:classappend="${#fields.hasErrors('autor')} ? 'cssError form-control':'form-control'">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-7">
+                    <label><strong>Titulo: </strong></label>
+                    <input type="text" id="titulo" th:field="*{titulo}"
+                        th:classappend="${#fields.hasErrors('titulo')} ? 'cssError form-control':'form-control'">
+                </div>
+                <div class="form-group col-md-5">
+                    <label><strong>Adjuntar un fichero:</strong></label>
+                    <input type="file" name="file" class="form-control-file" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label><strong>Sinopsis: </strong></label>
+                <textarea th:field="*{sinopsis}"
+                    th:classappend="${#fields.hasErrors('titulo')} ? 'cssError form-control':'form-control'"
+                    rows="5"></textarea>
+            </div>
+            <input type="submit" class="btn btn-primary">
+            <a href="/libros/" class="btn btn-secondary">Atrás</a>
+        </form>
+    </section>
+    <footer class="mt-5">
+        <th:block th:insert="~{fragments/fragment.html :: footer}"></th:block>
+    </footer>
+</body>
+
+</html>
