@@ -1,7 +1,7 @@
 # 📚 Proyecto de Prácticas: Catálogo de Libros
-
+gg
 ## 📝 Descripción
-    Aplicación web desarrollada en Java con Spring Boot, orientada a la gestión de un catálogo de libros. Permite consultar, puntuar y comentar libros, realizar búsquedas y obtener rankings según las puntuaciones de los usuarios. Ideal para prácticas, con base de datos H2 que se crea y carga automáticamente en cada ejecución.
+Aplicación web desarrollada en Java con Spring Boot, orientada a la gestión de un catálogo de libros. Permite consultar, puntuar y comentar libros, realizar búsquedas y obtener rankings según las puntuaciones de los usuarios. Ideal para prácticas, con base de datos H2 que se crea y carga automáticamente en cada ejecución.
 
 ---
 
