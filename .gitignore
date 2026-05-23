@@ -31,3 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
+
+## Usuario y clave del correo ##
+secrets.properties
